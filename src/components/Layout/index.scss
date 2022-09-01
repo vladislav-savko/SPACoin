@@ -1,0 +1,77 @@
+.header {
+    height: 50px;
+    width: 100vw;
+    box-sizing: border-box;
+    background-color: rgb(40,40,40);
+    filter: drop-shadow(2px 4px 6px black);
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+
+    & > .header-coins {
+        display: flex;
+        height: 100%;
+        gap: 1rem;
+
+        & > .coin {
+            display: flex;
+            color: white;
+            align-items: center;
+            gap: 0.3rem;
+            line-height: 0;
+
+            & > img {
+                height: 24px;
+                width: 24px;
+            }
+        }
+    }
+
+    & > .portfolio_info {
+        padding: 5px;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+
+
+        & > img {
+            height: 100%;
+            border-radius: 5px;
+        }
+
+        & > .count {
+            width: auto;
+        }
+
+        & > .def {
+            width: auto;
+        }
+
+        .button-open-portfolio {
+            border: 0;
+            height: 25px;
+            border-radius: 5px;
+            filter: drop-shadow(2px 2px 0px black);
+            font-weight: 700;
+            font-size: 1rem;
+            background-color: rgb(40, 40, 40);
+            color: white;
+
+            &:hover {
+                background-color: rgb(50, 50, 50);
+                cursor: pointer;
+            }
+
+            &:active {
+                background-color: white;
+                color: black;
+            }
+        }
+    }
+}
