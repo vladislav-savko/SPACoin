@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'opensans';
+  src: local('opensans'), url(./assets/fonts/OpenSans-Light.woff) format('woff');
+}
+
+.App {
+  width: auto;
+  height: auto;
+  background-color: rgb(40 40 55);
+}
