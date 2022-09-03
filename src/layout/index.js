@@ -1,8 +1,8 @@
 import './index.scss'
 import { Outlet } from 'react-router-dom'
-import btcpng from '../../assets/images/btc.png'
-import avatar from '../../assets/images/monkey.png'
-import Portfolio from './Portfolio'
+import btcpng from '../assets/images/btc.png'
+import avatar from '../assets/images/monkey.png'
+import Portfolio from '../components/Portfolio'
 import { useState } from 'react'
 
 const Layout = () => {
