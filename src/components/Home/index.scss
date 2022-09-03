@@ -6,6 +6,7 @@
     background-color: rgb(40 40 55);
     position: relative;
     z-index: 1;
+    overflow: auto;
 
     & > .coins {
         height: calc(100vh - 50px);
@@ -13,54 +14,5 @@
         color: white;
         padding: 20px 15px 0;
         box-sizing: border-box;
-    }
-
-    #coins {
-        width: 100%;
-
-        & > thead > tr {
-            height: 40px;
-            text-transform: uppercase;
-        }
-
-        & > tbody > tr {
-            font-size: 0.9rem;
-
-            & > th:nth-child(9) {
-                display: flex;
-                justify-content: space-around;
-                .button-add-coin, .button-info-coin {
-                    border: 0;
-                    width: 50px;
-                    height: 25px;
-                    border-radius: 5px;
-                    background-color: white;
-                    color: black;
-                    filter: drop-shadow(2px 2px 0px black);
-                    font-weight: 700;
-                    font-size: 1rem;
-    
-                    &:hover {
-                        background-color: rgb(40, 40, 40);
-                        color: white;
-                        cursor: pointer;
-                    }
-    
-                    &:active {
-                        background-color: rgb(50, 50, 50);
-                    }
-                }
-            }         
-
-            & > th:nth-child(2) {
-                display: flex;
-                gap: 0.3rem;
-    
-                & > img {
-                    height: 24px;
-                    width: 24px;
-                }
-            }
-        }
     }
 }
