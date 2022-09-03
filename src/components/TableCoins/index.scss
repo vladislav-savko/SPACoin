@@ -1,0 +1,32 @@
+#coins {
+    width: 100%;
+
+    & > thead > tr {
+        height: 40px;
+        text-transform: uppercase;
+    }
+
+    & > tbody > tr {
+        font-size: 0.9rem;
+
+        & > th:nth-child(2) {
+            text-align: left;
+        }
+    
+        & > th:nth-child(9) {
+            display: flex;
+            justify-content: space-around;
+        }         
+    
+        & > th:nth-child(2) {
+            display: flex;
+            gap: 0.3rem;
+    
+            & > img {
+                height: 24px;
+                width: 24px;
+            }
+        }
+    }
+}
+
