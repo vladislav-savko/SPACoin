@@ -29,9 +29,7 @@ const ChartCoin = (ctx) => {
     }
 
     return (
-        <div>
-           <Chart type={'line'} data={data} options={config} />
-        </div>
+        <Chart type={'line'} data={data} options={config} />
     )
 }
 
