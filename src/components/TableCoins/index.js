@@ -24,7 +24,7 @@ const TableCoins = (ctx) => {
             <tbody>
                 {
                     ctx.coins.map((coin) => 
-                        <tr key={coin.rank} onClick={() => navigate('/coin/' + coin.id) }>
+                        <tr key={coin.rank} onClick={(e) => { ctx.coins.length > 1 ? navigate('/coin/' + coin.id) : e.preventDefault() } }>
                             <th>{coin.rank}</th>
                             <th>
                                 <img src={getImage(coin.symbol)} />
