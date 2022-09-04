@@ -1,5 +1,14 @@
+.coinInfo {
+    padding: 20px 15px 0;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
 #coins {
     width: 100%;
+    height: fit-content;
+    color: white;
 
     & > thead > tr {
         height: 40px;
@@ -8,6 +17,11 @@
 
     & > tbody > tr {
         font-size: 0.9rem;
+
+        &:hover {
+            cursor: pointer;
+            background-color: grey;
+        }
 
         & > th:nth-child(2) {
             text-align: left;

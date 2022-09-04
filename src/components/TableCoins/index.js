@@ -1,7 +1,10 @@
 import './index.scss'
 import { getImage } from '../../api'
+import { useNavigate } from 'react-router-dom'
 
-const TableCoins = (coins) => {
+const TableCoins = (ctx) => {
+    let navigate = useNavigate()
+
     return (
         <>
         <table id='coins'>
@@ -20,8 +23,8 @@ const TableCoins = (coins) => {
             </thead>
             <tbody>
                 {
-                    coins.coins.map((coin) => 
-                        <tr>
+                    ctx.coins.map((coin) => 
+                        <tr key={coin.rank} onClick={() => navigate('/coin/' + coin.id) }>
                             <th>{coin.rank}</th>
                             <th>
                                 <img src={getImage(coin.symbol)} />
@@ -39,7 +42,7 @@ const TableCoins = (coins) => {
                                 <Button textButton="i" /> */}
                             </th>
                         </tr>
-                    )
+                    )     
                 }
             </tbody>
         </table>
