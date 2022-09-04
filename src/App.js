@@ -12,8 +12,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path='/' element={<Index />} />
-          {/* <Route path="/coin/:id" element={<CoinInfo />} />
-          <Route path='*' element={<Navigate replace to="/" />} /> */}
+          <Route path="/coin/:id" element={<Coin />} />
+          <Route path='*' element={<Navigate replace to="/" />} />
         </Route>
       </Routes>
   );
