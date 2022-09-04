@@ -18,9 +18,19 @@ const ChartCoin = (ctx) => {
         }]
     };
 
+    const config = {
+        scales: {
+            yAxis: {
+                ticks: {
+                   callback: function(price) { return new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD' }).format(price) }
+                }
+            }
+        }
+    }
+
     return (
         <div>
-           <Chart type={'line'} data={data} />
+           <Chart type={'line'} data={data} options={config} />
         </div>
     )
 }
