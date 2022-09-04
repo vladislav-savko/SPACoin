@@ -3,7 +3,7 @@ import { Route, Navigate, Routes } from 'react-router-dom'
 import React from 'react';
 
 import Index from './pages/index'
-import CoinInfo from './pages/coinInfo';
+import Coin from './pages/coin';
 import Layout  from './layout'
 
 
