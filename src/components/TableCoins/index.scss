@@ -9,6 +9,7 @@
     width: 100%;
     height: fit-content;
     color: white;
+    border-spacing: 0;
 
     & > thead > tr {
         height: 40px;
@@ -20,7 +21,7 @@
 
         &:hover {
             cursor: pointer;
-            background-color: grey;
+            background-color: #21212e;
         }
 
         & > th:nth-child(2) {
