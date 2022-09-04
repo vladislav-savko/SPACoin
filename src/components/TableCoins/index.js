@@ -36,7 +36,7 @@ const TableCoins = (ctx) => {
                             <th>{new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD' }).format(coin.vwap24Hr)}</th>
                             <th>{new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD', notation: 'compact' }).format(coin.supply)}</th>
                             <th>{new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD', notation: 'compact' }).format(coin.volumeUsd24Hr)}</th>
-                            <th>{new Intl.NumberFormat('eng-US', { style: 'percent', compactDisplay: 'short' }).format(coin.changePercent24Hr)}</th>
+                            <th>{new Intl.NumberFormat('eng-US', { style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(coin.changePercent24Hr/100)}</th>
                             <th>
                                 {/* <Button textButton="+" onClick={() => setAddCoinActive(true)} />
                                 <Button textButton="i" /> */}
