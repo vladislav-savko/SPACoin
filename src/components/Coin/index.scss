@@ -1,8 +1,16 @@
 .coinInfo {
+    padding: 20px 15px 0;
+
     height: calc(100vh - 50px);
     width: 100%;
 
+    overflow: auto;
 
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
 
+    & > canvas {
+        max-height: 80vh;
     }
 }
