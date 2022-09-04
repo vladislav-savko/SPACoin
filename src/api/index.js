@@ -6,10 +6,9 @@ export const createAPI = endpoint => {
     let url = base_url + endpoint;
 
     return {
-        fetch: () => axios.get(url).then(resp => {
-            return resp.data
-        }),
-        fetchById: id => axios.get(url + id),
+        fetch: () => axios.get(url).then(resp => { return resp.data }),
+        fetchById: id => axios.get(url + id).then(resp => { return resp.data }),
+        fetchByIdHystory: id => axios.get(url + id + '/history?interval=d1').then(resp => { return resp.data })
     }
 }
 
