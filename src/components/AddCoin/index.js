@@ -1,5 +1,6 @@
 import './index.scss'
 import { useEffect, useState } from 'react'
+import Button from '../Button'
 
 const AddCoin = ({active, setActive, coinId, coinPrice, coinSymbol}) => {
 
@@ -36,25 +37,19 @@ const AddCoin = ({active, setActive, coinId, coinPrice, coinSymbol}) => {
 
     const addCoinToCase = () => {
         setCountCoin(inputCountCoin);
+        setActive(false);
     }
 
     return (
-        <div className={active ? 'addCoin active' : 'addCoin'} onClick={() => setActive(false)}>
-            <div className='addCoin_body' onClick={e => e.stopPropagation()}>
-                <div className='addCoin_info'>
-                    <span>Adding coin</span>
-                    <span>{coinId}</span>
+        <div className={active ? 'addCoin addCoin--active' : 'addCoin'} onClick={() => setActive(false)}>
+            <div className='addCoin__body' onClick={e => e.stopPropagation()}>
+                <div className='addCoin__info'>
+                    <span className='addCoin__info-text'>Adding coin</span>
+                    <span className='addCoin__info-coin'>{coinId}</span>
                 </div>
-                <form>
-                    <input type='text' name='countCoin' placeholder='write the number of coins' onChange={(event) => setInputCountCoin(event.target.value)}></input>
-                    <button onClick={ (e) => 
-                    { 
-                        e.preventDefault();
-                        addCoinToCase();
-                        setActive(false);
-                    }}>
-                        Add
-                    </button>
+                <form className='addCoin__form'>
+                    <input className='addCoin__form--input' type='text' name='countCoin' placeholder='write the number of coins' onChange={(event) => setInputCountCoin(event.target.value)}></input>
+                    <Button className='button--green button--h35 button--r15' textButton="Add" event={ addCoinToCase } />
                 </form>
             </div>
         </div>
