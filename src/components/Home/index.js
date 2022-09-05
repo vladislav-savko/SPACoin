@@ -17,7 +17,7 @@ const Home = () => {
     return (
         <>
         <div className='home'>
-            <div className='coins'>
+            <div className='home__wrapper'>
                 <TableCoins coins={data} />
             </div>
         </div>  
