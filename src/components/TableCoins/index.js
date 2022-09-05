@@ -24,37 +24,36 @@ const TableCoins = (ctx) => {
 
     return (
         <>
-        <table id='coins'>
-            <thead>
-                <tr>
-                    <th>Rank</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Market Cap</th>
-                    <th>VWAP (24Hr)</th>
-                    <th>Supply</th>
-                    <th>Volume (24Hr)</th>
-                    <th>Change (24Hr)</th>
-                    <th>Event</th>
+        <table className='table-coins'>
+            <thead className='table-coins__head'>
+                <tr className='table-coins__row--head'>
+                    <th className='table-coins__col'>Rank</th>
+                    <th className='table-coins__col'>Name</th>
+                    <th className='table-coins__col'>Price</th>
+                    <th className='table-coins__col'>Market Cap</th>
+                    <th className='table-coins__col'>VWAP (24Hr)</th>
+                    <th className='table-coins__col'>Supply</th>
+                    <th className='table-coins__col'>Volume (24Hr)</th>
+                    <th className='table-coins__col'>Change (24Hr)</th>
+                    <th className='table-coins__col'>Event</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody className='table-coins__body'>
                 {
                     ctx.coins.map((coin) => 
-                        <tr key={coin.rank} onClick={(e) => { ctx.coins.length > 1 && e.target.type != 'button' ?  navigate('/coin/' + coin.id) : e.preventDefault() } }>
-                            <th>{coin.rank}</th>
-                            <th>
-                                <img src={getImage(coin.symbol)} />
-
+                        <tr className='table-coins__row--body' key={coin.rank} onClick={(e) => { ctx.coins.length > 1 && e.target.type != 'button' ?  navigate('/coin/' + coin.id) : e.preventDefault() } }>
+                            <th className='table-coins__col'>{coin.rank}</th>
+                            <th className='table-coins__col'>
+                                <img className='table-coins__avatar' src={getImage(coin.symbol)} />
                                 {coin.name}
                             </th>
-                            <th>{new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD' }).format(coin.priceUsd)}</th>
-                            <th>{new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD', notation: 'compact' }).format(coin.marketCapUsd)}</th>
-                            <th>{new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD' }).format(coin.vwap24Hr)}</th>
-                            <th>{new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD', notation: 'compact' }).format(coin.supply)}</th>
-                            <th>{new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD', notation: 'compact' }).format(coin.volumeUsd24Hr)}</th>
-                            <th>{new Intl.NumberFormat('eng-US', { style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(coin.changePercent24Hr/100)}</th>
-                            <th>
+                            <th className='table-coins__col'>{new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD' }).format(coin.priceUsd)}</th>
+                            <th className='table-coins__col'>{new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD', notation: 'compact' }).format(coin.marketCapUsd)}</th>
+                            <th className='table-coins__col'>{new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD' }).format(coin.vwap24Hr)}</th>
+                            <th className='table-coins__col'>{new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD', notation: 'compact' }).format(coin.supply)}</th>
+                            <th className='table-coins__col'>{new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD', notation: 'compact' }).format(coin.volumeUsd24Hr)}</th>
+                            <th className='table-coins__col'>{new Intl.NumberFormat('eng-US', { style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(coin.changePercent24Hr/100)}</th>
+                            <th className='table-coins__col'>
                                 <Button textButton="+" event={ activeAddCoin } params={ [coin.id, coin.priceUsd, coin.symbol] } />
                             </th>
                         </tr>

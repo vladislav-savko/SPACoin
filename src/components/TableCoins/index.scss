@@ -1,40 +1,37 @@
-#coins {
+.table-coins {
     width: 100%;
     height: fit-content;
     color: white;
     border-spacing: 0;
 
-    & > thead > tr {
-        height: 40px;
-        text-transform: uppercase;
+    &__row {
+
+        &--head {
+            text-transform: uppercase;
+        }
+
+        &--body {
+            font-size: 0.9rem;
+
+            &:hover {
+                cursor: pointer;
+                background-color: #21212e;
+            } 
+        }
     }
 
-    & > tbody > tr {
-        font-size: 0.9rem;
+    &__col {
+        padding: 5px 0;
 
-        &:hover {
-            cursor: pointer;
-            background-color: #21212e;
-        }
-
-        & > th:nth-child(2) {
+        &:nth-child(2) {
             text-align: left;
-        }
-    
-        & > th:nth-child(9) {
-            display: flex;
-            justify-content: space-around;
-        }         
-    
-        & > th:nth-child(2) {
             display: flex;
             gap: 0.3rem;
-    
-            & > img {
-                height: 24px;
-                width: 24px;
-            }
         }
     }
-}
 
+    &__avatar {
+        height: 24px;
+        width: 24px;
+    }
+}
