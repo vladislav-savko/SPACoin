@@ -1,9 +1,11 @@
 import './index.scss'
 import { Outlet } from 'react-router-dom'
-import avatar from '../assets/images/monkey.png'
-import Portfolio from '../components/Portfolio'
 import { useState, useEffect } from 'react'
 import { createAPI, getImage } from '../api'
+
+import avatar from '../assets/images/monkey.png'
+import Portfolio from '../components/Portfolio'
+import Button from '../components/Button'
 
 const Layout = () => {
     const [portfolioActive, setPortfolioActive] = useState (false);
@@ -59,28 +61,33 @@ const Layout = () => {
         return
     }, [coins]);
 
+    const activePortfolio = () => {
+        setPortfolioActive(true);
+    }
+
     return (
         <div className='App'>
             <div className='header'>
-                <div className='header-coins'>
+                <div className='header__coins'>
                     {
                         coinsTop.map((coin) => 
-                            <div className='coin' key={coin.rank}>
-                                <img src={getImage(coin.symbol)} />
-                                <span className='coin-price'>{new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD' }).format(coin.priceUsd)}</span>
+                            <div className='header__coin' key={coin.rank}>
+                                <img className='header__coin-img' src={getImage(coin.symbol)} />
+                                <span className='header__coin-price'>{new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD' }).format(coin.priceUsd)}</span>
                             </div>
                         )
                     }
                 </div>
-                <div className='portfolio_info'>
-                    <span className='count'>{ new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD' }).format(caseInfo.casePrice) }</span>
+                <div className='header__info'>
+                    <span className='header__info-casePrice'>{ new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD' }).format(caseInfo.casePrice) }</span>
                     <span>|</span>
-                    <span className='def'>
-                        { new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD' }).format(caseInfo.caseDifferencePrice) } 
+                    <span className='header__info-caseDifference'>
+                        { new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD' }).format(caseInfo.caseDifferencePrice) }
                         ({ new Intl.NumberFormat('eng-US', { style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 5 }).format(caseInfo.caseDifferencePricePercent/100) })
-                        </span>
-                    <img src={avatar} />
-                    <button className='button-open-portfolio' onClick={() => setPortfolioActive(true)}>portfolio</button>
+                    </span>
+                    <img className='header__info-caseAvatar' src={avatar} />
+
+                    <Button textButton="portfolio" event={ activePortfolio } />
                 </div>
             </div>
 
