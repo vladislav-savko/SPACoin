@@ -33,15 +33,14 @@ const Layout = () => {
     }, [setCoins]);
 
     useEffect(() => {
-        let coinsCase = store('coinsCase').getStore();
-
+        setlStore(store('coinsCase').getStore());
         let totalPriceCase = 0;
         let differencePrice = 0;
         let differencePricePercent = 0;
 
-        if (coinsCase != null && coins.length != 0)
+        if (lStore != null && coins.length != 0)
         {
-            coinsCase.map((coin) => {
+            lStore.map((coin) => {
                 let coinId = coins.findIndex((coinCase) => { return coinCase.id === coin.coinId });
 
                 totalPriceCase += coin.myPriceCoin;
@@ -56,8 +55,6 @@ const Layout = () => {
                 caseDifferencePricePercent: differencePricePercent
             })
         }
-        
-        setlStore(coinsCase);
                 
         return
     }, [coins]);
@@ -92,7 +89,7 @@ const Layout = () => {
                 </div>
             </div>
 
-            <Portfolio active={portfolioActive} setActive={setPortfolioActive} store={lStore}/>
+            <Portfolio active={portfolioActive} setActive={setPortfolioActive} lStore={lStore}/>
                  
             <Outlet />
         </div>

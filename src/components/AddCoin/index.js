@@ -28,10 +28,8 @@ const AddCoin = ({active, setActive, coinId, coinPrice, coinSymbol}) => {
                 else
                     coinsArray[coinInCaseId] = { coinId, coinSymbol, myCountCoin, coinPrice, myPriceCoin };
 
-                    store('coinsCase').setStore(JSON.stringify( coinsArray ));
+                store('coinsCase').setStore(coinsArray);
             }
-
-            coinsCase = JSON.parse(localStorage.getItem('coinsCase'));
         }   
     }, [myCountCoin])
 
