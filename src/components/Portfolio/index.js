@@ -2,17 +2,18 @@ import './index.scss'
 import avatar from '../../assets/images/monkey.png'
 import { useEffect, useState } from 'react'
 import { getImage } from '../../api'
+import { store } from '../../localStorage'
 import Button from '../Button'
 
-const Portfolio = ({active, setActive, store}) => {
+const Portfolio = ({active, setActive, lStore}) => {
 
     const deleteCoinFromCase = (coinDeleteId) => {
-        let coinsCase = JSON.parse(localStorage.getItem('coinsCase'));
+        let coinsCase = store('coinsCase').getStore();
         let coinIdx = coinsCase.findIndex((coin) => { return coin.coinId == coinDeleteId });
         let coinsDOM = document.getElementsByClassName('portfolio__coin');
         
         coinsCase.splice(coinIdx, 1);
-        localStorage.setItem('coinsCase', JSON.stringify(coinsCase));
+        store('coinsCase').setStore(coinsCase);
         coinsDOM[coinIdx].remove();
     }
 
@@ -25,8 +26,8 @@ const Portfolio = ({active, setActive, store}) => {
                 </div>
                 <div className='portfolio__body'>
                     {
-                        store == null ? <div className='portfolio__coin--null'>Case clear</div> : 
-                        store.map((coin) => 
+                        lStore == null ? <div className='portfolio__coin--null'>Case clear</div> : 
+                        lStore.map((coin) => 
                         <div className='portfolio__coin' key={coin.coinId}>
                             <img className='portfolio__coin-avatar' src={getImage(coin.coinSymbol)} />
                             <span className='portfolio__coin-count'>{coin.myCountCoin}<sub>{coin.coinSymbol}</sub></span>

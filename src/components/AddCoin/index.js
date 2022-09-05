@@ -1,6 +1,7 @@
 import './index.scss'
 import { useEffect, useState } from 'react'
 import Button from '../Button'
+import { store } from '../../localStorage'
 
 const AddCoin = ({active, setActive, coinId, coinPrice, coinSymbol}) => {
 
@@ -8,16 +9,15 @@ const AddCoin = ({active, setActive, coinId, coinPrice, coinSymbol}) => {
     const [inputCountCoin, setInputCountCoin] = useState();
 
     useEffect(() => {
-        let coinsCase = JSON.parse(localStorage.getItem('coinsCase'));
+        let coinsCase = store('coinsCase').getStore();
         let myPriceCoin = (coinPrice * parseInt(myCountCoin));
 
         if (myCountCoin != 0)
         {
             if (coinsCase == null)
-                localStorage.setItem('coinsCase', JSON.stringify( [{ coinId, coinSymbol, myCountCoin, coinPrice, myPriceCoin }] ));
+                store('coinsCase').setStore([{ coinId, coinSymbol, myCountCoin, coinPrice, myPriceCoin }]);
             else
             {
-                
                 let coinsArray = [];
                 coinsArray = coinsCase;
 
@@ -28,7 +28,7 @@ const AddCoin = ({active, setActive, coinId, coinPrice, coinSymbol}) => {
                 else
                     coinsArray[coinInCaseId] = { coinId, coinSymbol, myCountCoin, coinPrice, myPriceCoin };
 
-                localStorage.setItem('coinsCase', JSON.stringify( coinsArray ));
+                    store('coinsCase').setStore(JSON.stringify( coinsArray ));
             }
 
             coinsCase = JSON.parse(localStorage.getItem('coinsCase'));

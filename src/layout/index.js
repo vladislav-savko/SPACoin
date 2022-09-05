@@ -2,6 +2,7 @@ import './index.scss'
 import { Outlet } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { createAPI, getImage } from '../api'
+import { store } from '../localStorage'
 
 import avatar from '../assets/images/monkey.png'
 import Portfolio from '../components/Portfolio'
@@ -11,7 +12,7 @@ const Layout = () => {
     const [portfolioActive, setPortfolioActive] = useState (false);
     const [coinsTop, setCoinsTop] = useState([]);
     const [coins, setCoins] = useState([]);
-    const [store, setStore] = useState([]);
+    const [lStore, setlStore] = useState([]);
 
     const [caseInfo, setCaseInfo] = useState({
         casePrice: 0,
@@ -32,7 +33,7 @@ const Layout = () => {
     }, [setCoins]);
 
     useEffect(() => {
-        let coinsCase = JSON.parse(localStorage.getItem('coinsCase'));
+        let coinsCase = store('coinsCase').getStore();
 
         let totalPriceCase = 0;
         let differencePrice = 0;
@@ -56,7 +57,7 @@ const Layout = () => {
             })
         }
         
-        setStore(coinsCase);
+        setlStore(coinsCase);
                 
         return
     }, [coins]);
@@ -91,7 +92,7 @@ const Layout = () => {
                 </div>
             </div>
 
-            <Portfolio active={portfolioActive} setActive={setPortfolioActive} store={store}/>
+            <Portfolio active={portfolioActive} setActive={setPortfolioActive} store={lStore}/>
                  
             <Outlet />
         </div>
