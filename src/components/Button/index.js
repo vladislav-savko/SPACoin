@@ -1,8 +1,8 @@
 import './index.scss'
 
-const Button = ({textButton, event, params}) => {
+const Button = ({className, textButton, event, params}) => {
     return (
-        <button type='button' className='button' onClick={() => event(params)}>
+        <button type='button' className={'button ' + className} onClick={() => event(params)}>
             { textButton }
         </button>
     )

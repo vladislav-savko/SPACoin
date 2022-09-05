@@ -10,6 +10,24 @@
     font-weight: 700;
     font-size: 1rem;
 
+    &--red {
+        background-color: darkred;
+        color: #fff;
+    }
+
+    &--green {
+        background-color: green;
+        color: #fff;
+    }
+
+    &--h35 {
+        height: 35px;
+    }
+
+    &--r15 {
+        border-radius: 15px;
+    }
+
     filter: drop-shadow(2px 2px 0px black);
     
     &:hover {
