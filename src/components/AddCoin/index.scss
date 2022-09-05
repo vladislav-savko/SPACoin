@@ -20,14 +20,14 @@
     &__body {
         padding: 20px;
         border-radius: 20px;
-        background-color: rgb(40, 40, 40);
-        filter: drop-shadow(0 0 20px b);
+        background-color: rgb(40 40 40);
+        filter: drop-shadow(0 0 20px black);
     }
 
     &__info {
         color: white;
         text-transform: uppercase;
-        padding: 0 0 20px 0;
+        padding: 0 0 20px;
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -47,7 +47,7 @@
         &--input {
             height: 30px;
             border-radius: 15px;
-            background-color: rgb(40, 40, 40);
+            background-color: rgb(40 40 40);
             outline: 0;
             color: white;
             font-size: 1rem;
