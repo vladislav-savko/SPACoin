@@ -12,88 +12,65 @@
     pointer-events: none;
     transition: all 0.5s;
 
-    &.active {
+    &--active {
         opacity: 1;
         pointer-events: auto;
     }
 
-    & > .portfolio_body {
+    &__wrapper {
         padding: 20px;
         border-radius: 20px;
         background-color: rgb(40, 40, 40);
         height: 80vh;
-        min-width: 350px;
+        min-width: 400px;
         filter: drop-shadow(0 0 20px);
+    }
 
-        & > .portfolio_info {
-            display: flex;
-            align-items: center;
+    &__head {
+        display: flex;
+        align-items: center;
+        color: white;
+        margin-bottom: 20px;
+
+        &-avatar {
+            height: 100px;
+            width: 100px;
+            border-radius: 20px;
+        }
+
+        &-text {
+            font-size: 2rem;
+            margin-right: auto;
+            margin-left: auto;
+        }
+    }
+
+    &__coin {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgb(55, 55, 55);
+        border-radius: 15px;
+        gap: 1rem;
+        padding: 10px 20px;
+        color: white;
+        margin-bottom: 10px;
+
+        &--null {
+            font-size: 1.5rem;
+            text-align: center;
             color: white;
-            margin-bottom: 20px;
+        }
 
-            & > img {
-                height: 100px;
-                width: 100px;
-                border-radius: 20px;
-            }
-
-            & > span {
-                font-size: 2rem;
-                margin-right: auto;
-                margin-left: auto;
+        &-price {
+            &--green {
+                color: green;
             }
         }
 
-        & > .coins {
-
-            & > .case_clear {
-                font-size: 1.5rem;
-                text-align: center;
-                color: white;
-            }
-
-            & > .pcoin {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                background-color: rgb(55, 55, 55);
-                border-radius: 15px;
-                gap: 1rem;
-                padding: 10px 20px;
-                color: white;
-                margin-bottom: 10px;
-
-                & > .count-price-coin {
-                    color: green;
-                }
-
-                & > .delete-coin {
-                    border: 0;
-                    width: 50px;
-                    height: 25px;
-                    border-radius: 5px;
-                    color: white;
-                    filter: drop-shadow(2px 2px 0px black);
-                    font-weight: 700;
-                    font-size: 1rem;
-                    background-color: #cd2c2c;
-                    text-align: center;
-
-                    &:hover {
-                        cursor: pointer;
-                        background-color: #a32020;
-                    }
-
-                    &:active {
-                        background-color: rgb(40, 40, 40)
-                    }
-                }
-
-                & > img {
-                    width: 44px;
-                    height: 44px;
-                }
-            }
+        &-avatar {
+            width: 44px;
+            height: 44px;
         }
     }
 }
