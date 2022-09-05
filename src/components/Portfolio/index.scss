@@ -22,6 +22,7 @@
         border-radius: 20px;
         background-color: rgb(40, 40, 40);
         height: 80vh;
+        min-width: 350px;
         filter: drop-shadow(0 0 20px);
 
         & > .portfolio_info {
@@ -45,9 +46,16 @@
 
         & > .coins {
 
-            & > .coin {
+            & > .case_clear {
+                font-size: 1.5rem;
+                text-align: center;
+                color: white;
+            }
+
+            & > .pcoin {
                 display: flex;
                 align-items: center;
+                justify-content: space-between;
                 background-color: rgb(55, 55, 55);
                 border-radius: 15px;
                 gap: 1rem;

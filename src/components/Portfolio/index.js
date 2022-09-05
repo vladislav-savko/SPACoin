@@ -1,11 +1,19 @@
 import './index.scss'
-import btcpng from '../../assets/images/btc.png'
 import avatar from '../../assets/images/monkey.png'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { getImage } from '../../api'
 
-const Portfolio = ({active, setActive}) => {
+const Portfolio = ({active, setActive, store}) => {
 
-    const store = localStorage.getItem('portfolioCoins');
+    const deleteCoinFromCase = (coinDeleteId) => {
+        let coinsCase = JSON.parse(localStorage.getItem('coinsCase'));
+        let coinIdx = coinsCase.findIndex((coin) => { return coin.coinId == coinDeleteId });
+        let coinsDOM = document.getElementsByClassName('pcoin');
+        
+        coinsCase.splice(coinIdx, 1);
+        localStorage.setItem('coinsCase', JSON.stringify(coinsCase));
+        coinsDOM[coinIdx].remove();
+    }
 
     return (
         <div className={active ? 'portfolio active' : 'portfolio'} onClick={() => setActive(false)}>
@@ -15,13 +23,17 @@ const Portfolio = ({active, setActive}) => {
                     <span>Portfolio</span>
                 </div>
                 <div className='coins'>
-                    <div className='coin'>
-                        <img src={btcpng} />
-                        <span className='count-coin'>2.3<sub>BTC</sub></span>
-                        <span className='price-coin'>$19,939.91</span>
-                        <span className='count-price-coin'>$40,939.91</span>
-                        <div className='delete-coin'>x</div>
-                    </div>
+                    {
+                        store == null ? <div className='case_clear'>Case clear</div> : store.map((coin) => 
+                        <div className='pcoin' key={coin.coinId}>
+                            <img src={getImage(coin.coinSymbol)} />
+                            <span className='count-coin'>{coin.myCountCoin}<sub>{coin.coinSymbol}</sub></span>
+                            <span className='price-coin'>{new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD' }).format(coin.coinPrice)}</span>
+                            <span className='count-price-coin'>{new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD' }).format(coin.myPriceCoin)}</span>
+                            <div className='delete-coin' onClick={() => deleteCoinFromCase(coin.coinId)}>x</div>
+                        </div>
+                        )
+                    }
                 </div>
             </div>
         </div>
