@@ -1,7 +1,6 @@
 import './index.scss'
 import { createAPI } from '../../api'
 
-import AddCoin from './AddCoin'
 import TableCoins from '../TableCoins'
 
 import { useEffect, useState } from 'react';
@@ -22,8 +21,6 @@ const Home = () => {
                 <TableCoins coins={data} />
             </div>
         </div>  
-
-        <AddCoin />
       </>
     )
 }
