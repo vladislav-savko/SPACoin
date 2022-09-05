@@ -4,7 +4,7 @@ import { Chart } from 'react-chartjs-2';
 const ChartCoin = (ctx) => {
     const labels = ctx.hysory.map((day) => { 
         let date = new Date(day.date);
-        let shortDate = date.getDate() + "." + date.getMonth() + "." + date.getFullYear();
+        let shortDate = `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
         return shortDate
     })
 
