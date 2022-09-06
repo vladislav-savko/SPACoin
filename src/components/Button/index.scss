@@ -9,6 +9,10 @@
     font-size: 1rem;
     filter: drop-shadow(2px 2px 0 black);
 
+    @media (max-width: 800px) {
+        font-size: 0.6rem;
+    }
+
     &--red {
         background-color: darkred;
         color: #fff;

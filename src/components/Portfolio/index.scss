@@ -24,6 +24,7 @@
         height: 80vh;
         min-width: 400px;
         filter: drop-shadow(0 0 20px);
+        overflow: auto;
     }
 
     &__head {
@@ -42,6 +43,10 @@
             font-size: 2rem;
             margin-right: auto;
             margin-left: auto;
+        }
+
+        &-close {
+            font-size: 2rem;
         }
     }
 
@@ -73,6 +78,30 @@
         &-avatar {
             width: 44px;
             height: 44px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        &__wrapper {
+            min-width: 100vw;
+            height: 100vh;
+        }
+
+        &__head {
+            padding: 15px;
+
+            &-avatar {
+                height: 40px;
+                width: 40px;
+            }
+        }
+
+        &__body {
+            padding: 15px;
+        }
+
+        &__coin {
+            flex-wrap: wrap;
         }
     }
 }

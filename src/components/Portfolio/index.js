@@ -23,6 +23,7 @@ const Portfolio = ({active, setActive, lStore}) => {
                 <div className='portfolio__head'>
                     <img className='portfolio__head-avatar' src={avatar} />
                     <span className='portfolio__head-text'>Portfolio</span>
+                    <span className='portfolio__head-close' onClick={() => setActive(false)}>x</span>
                 </div>
                 <div className='portfolio__body'>
                     {
