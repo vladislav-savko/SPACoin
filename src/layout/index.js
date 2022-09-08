@@ -32,13 +32,14 @@ const Layout = () => {
         });
     }, [setCoins]);
 
-    useEffect(() => {
+    useEffect(() => {     
         setlStore(store('coinsCase').getStore());
+
         let totalPriceCase = 0;
         let differencePrice = 0;
         let differencePricePercent = 0;
 
-        if (lStore != null && coins.length != 0)
+        if (lStore.length != 0 && coins.length != 0)
         {
             lStore.map((coin) => {
                 let coinId = coins.findIndex((coinCase) => { return coinCase.id === coin.coinId });
@@ -47,17 +48,16 @@ const Layout = () => {
                 differencePrice += (coin.myPriceCoin - coins[coinId].priceUsd);
             })
 
-            differencePricePercent = (differencePrice)/totalPriceCase;
-
-            setCaseInfo({
-                casePrice: totalPriceCase,
-                caseDifferencePrice: differencePrice,
-                caseDifferencePricePercent: differencePricePercent
-            })
+            differencePricePercent = (differencePrice)/totalPriceCase; 
         }
-                
+
+        setCaseInfo({
+            casePrice: totalPriceCase,
+            caseDifferencePrice: differencePrice,
+            caseDifferencePricePercent: differencePricePercent
+        })
         return
-    }, [coins]);
+    }, [coins, portfolioActive]);
 
     const activePortfolio = () => {
         setPortfolioActive(true);
@@ -65,7 +65,7 @@ const Layout = () => {
 
     return (
         <div className='App'>
-            <div className='header'>
+            <div id="header" className='header'>
                 <div className='header__coins'>
                     {
                         coinsTop.map((coin) => 
@@ -89,7 +89,7 @@ const Layout = () => {
                 </div>
             </div>
 
-            <Portfolio active={portfolioActive} setActive={setPortfolioActive} lStore={lStore}/>
+            <Portfolio active={portfolioActive} setActive={setPortfolioActive} lStore={lStore} setlStore={setlStore}/>
                  
             <Outlet />
         </div>

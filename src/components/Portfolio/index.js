@@ -5,16 +5,17 @@ import { getImage } from '../../api'
 import { store } from '../../localStorage'
 import Button from '../Button'
 
-const Portfolio = ({active, setActive, lStore}) => {
+const Portfolio = ({active, setActive, lStore, setlStore}) => {
 
-    const deleteCoinFromCase = (coinDeleteId) => {
-        let coinsCase = store('coinsCase').getStore();
+    const deleteCoinFromCase = (coinDeleteId, event) => {
+        let coinsCase = lStore;
         let coinIdx = coinsCase.findIndex((coin) => { return coin.coinId == coinDeleteId });
-        let coinsDOM = document.getElementsByClassName('portfolio__coin');
+        let coinDOM = event.target.parentNode;
         
         coinsCase.splice(coinIdx, 1);
         store('coinsCase').setStore(coinsCase);
-        coinsDOM[coinIdx].remove();
+        setlStore(coinsCase);
+        coinDOM.style.display = 'none';
     }
 
     return (
@@ -27,7 +28,7 @@ const Portfolio = ({active, setActive, lStore}) => {
                 </div>
                 <div className='portfolio__body'>
                     {
-                        lStore == null ? <div className='portfolio__coin--null'>Case clear</div> : 
+                        lStore == null || lStore.length == 0 ? <div className='portfolio__coin--null'>Case clear</div> : 
                         lStore.map((coin) => 
                         <div className='portfolio__coin' key={coin.coinId}>
                             <img className='portfolio__coin-avatar' src={getImage(coin.coinSymbol)} />

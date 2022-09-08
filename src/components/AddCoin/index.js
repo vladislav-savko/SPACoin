@@ -30,6 +30,8 @@ const AddCoin = ({active, setActive, coinId, coinPrice, coinSymbol}) => {
 
                 store('coinsCase').setStore(coinsArray);
             }
+
+            setCountCoin(0);
         }   
     }, [myCountCoin])
 
