@@ -5,6 +5,7 @@
     border-spacing: 0;
 
     &__row {
+
         &--head {
             text-transform: uppercase;
         }
@@ -35,13 +36,16 @@
     }
 
     @media (max-width: 800px) {
+
         &__col {
+
             &:nth-child(4), &:nth-child(5), &:nth-child(6) {
                 display: none;
             }
         }
 
         &__row {
+
             &--head, &--body {
                 font-size: 0.6rem;
             }
