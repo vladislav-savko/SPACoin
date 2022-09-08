@@ -45,7 +45,7 @@ const AddCoin = ({active, setActive, coinId, coinPrice, coinSymbol}) => {
                     <span className='addCoin__info-text'>Adding coin</span>
                     <span className='addCoin__info-coin'>{coinId}</span>
                 </div>
-                <form className='addCoin__form'>
+                <form className='addCoin__form' onSubmit={(event) => event.preventDefault()}>
                     <input className='addCoin__form--input' type='text' name='countCoin' placeholder='write the number of coins' onChange={(event) => setInputCountCoin(event.target.value)}></input>
                     <Button className='button--green button--h35 button--r15' textButton="Add" event={ addCoinToCase } />
                 </form>
