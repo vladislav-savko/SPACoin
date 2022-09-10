@@ -30,8 +30,6 @@ const AddCoin = ({active, setActive, coinId, coinPrice, coinSymbol}) => {
 
                 store('coinsCase').setStore(coinsArray);
             }
-
-            setCountCoin(0);
         }   
     }, [myCountCoin])
 
@@ -47,9 +45,9 @@ const AddCoin = ({active, setActive, coinId, coinPrice, coinSymbol}) => {
                     <span className='addCoin__info-text'>Adding coin</span>
                     <span className='addCoin__info-coin'>{coinId}</span>
                 </div>
-                <form className='addCoin__form' onSubmit={(event) => event.preventDefault()}>
+                <form className='addCoin__form' onSubmit={(event) => addCoinToCase()}>
                     <input className='addCoin__form--input' type='text' name='countCoin' placeholder='write the number of coins' onChange={(event) => setInputCountCoin(event.target.value)}></input>
-                    <Button className='button--green button--h35 button--r15' textButton="Add" event={ addCoinToCase } />
+                    <button className='button button--green button--h35 button--r15' type='submit'>Add</button>
                 </form>
             </div>
         </div>
