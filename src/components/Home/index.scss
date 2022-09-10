@@ -26,6 +26,14 @@
 
         & > li {
 
+            &.selected {
+                
+                & > a {
+                    background-color: #313142;
+                    color: white;
+                }
+            }
+
             & > a {
                 border-radius: 50%;
                 height: 25px;
