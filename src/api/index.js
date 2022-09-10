@@ -19,7 +19,5 @@ export const getImage = symbol => {
     
     var image_url = `https://assets.coincap.io/assets/icons/${symbol}@2x.png`;
 
-    console.log(kek);
-
     return image_url;
 }
