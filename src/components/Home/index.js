@@ -5,42 +5,38 @@ import TableCoins from '../TableCoins'
 
 import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
+import { useNavigate } from 'react-router-dom';
 
-const Home = () => {
+const Home = (ctx) => {
     const [data, setData] = useState([]);
-    const [itemOffset, setItemOffset] = useState([]);
 
-    const [totalCountPage, setTotalCountPage] = useState(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        createAPI('v2/assets').fetch().then(resp => {
+        createAPI('v2/assets').fetchOffsetLimit(((ctx.page-1)*20), 20).then(resp => {
             setData(resp.data);
         });
-    }, [setData]);
-
-    useEffect(() => {
-        setTotalCountPage(data.length/20);
-        setItemOffset(data.slice(0, 20));
-    }, [data]);
+    }, [setData, ctx.page]);
 
     const handlePageClick = (event) => {
-        setItemOffset(data.slice(event.selected*20, event.selected*20+20));
+        navigate(`/page/${event.selected + 1}`);
     };
 
     return (
         <div className='home'>
             <div className='home__wrapper'>
-                <TableCoins coins={itemOffset} />
+                <TableCoins coins={data} />
 
                 <ReactPaginate  
-                    breakLabel=""
+                    breakLabel=".."
                     nextLabel=">"
                     onPageChange={handlePageClick}
-                    pageRangeDisplayed={5}
-                    pageCount={totalCountPage}
+                    pageRangeDisplayed={4}
+                    pageCount={100}
                     previousLabel="<"
                     renderOnZeroPageCount={null}
                     className="home__pagination"
+                    initialPage={ctx.page-1}
                 />
             </div>
         </div>  
