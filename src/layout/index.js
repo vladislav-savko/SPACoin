@@ -39,23 +39,24 @@ const Layout = () => {
         let differencePrice = 0;
         let differencePricePercent = 0;
 
-        if (lStore.length != 0 && coins.length != 0)
-        {
-            lStore.map((coin) => {
-                let coinId = coins.findIndex((coinCase) => { return coinCase.id === coin.coinId });
+        if (lStore != null)
+            if (lStore.length != 0 && coins.length != 0)
+            {
+                lStore.map((coin) => {
+                    let coinId = coins.findIndex((coinCase) => { return coinCase.id === coin.coinId });
 
-                totalPriceCase += coin.myPriceCoin;
-                differencePrice += (coin.myPriceCoin - coins[coinId].priceUsd);
+                    totalPriceCase += coin.myPriceCoin;
+                    differencePrice += (coin.myPriceCoin - coins[coinId].priceUsd);
+                })
+
+                differencePricePercent = (differencePrice)/totalPriceCase; 
+            }
+
+            setCaseInfo({
+                casePrice: totalPriceCase,
+                caseDifferencePrice: differencePrice,
+                caseDifferencePricePercent: differencePricePercent
             })
-
-            differencePricePercent = (differencePrice)/totalPriceCase; 
-        }
-
-        setCaseInfo({
-            casePrice: totalPriceCase,
-            caseDifferencePrice: differencePrice,
-            caseDifferencePricePercent: differencePricePercent
-        })
         return
     }, [coins, portfolioActive]);
 
