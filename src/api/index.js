@@ -17,7 +17,9 @@ export const createAPI = endpoint => {
 export const getImage = symbol => {
     symbol = symbol.toLowerCase();
     
-    let image_url = `https://assets.coincap.io/assets/icons/${symbol}@2x.png`;
+    var image_url = `https://assets.coincap.io/assets/icons/${symbol}@2x.png`;
+
+    console.log(kek);
 
     return image_url;
 }
