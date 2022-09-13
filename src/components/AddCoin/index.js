@@ -2,11 +2,14 @@ import './index.scss'
 import { useEffect, useState } from 'react'
 import Button from '../Button'
 import { store } from '../../localStorage'
+import { useOutletContext } from 'react-router-dom'
 
 const AddCoin = ({active, setActive, coinId, coinPrice, coinSymbol}) => {
 
     const [myCountCoin, setCountCoin] = useState(0);
     const [inputCountCoin, setInputCountCoin] = useState();
+
+    const { setAddingCoin } = useOutletContext();
 
     useEffect(() => {
         let coinsCase = store('coinsCase').getStore();
@@ -29,12 +32,14 @@ const AddCoin = ({active, setActive, coinId, coinPrice, coinSymbol}) => {
                     coinsArray[coinInCaseId] = { coinId, coinSymbol, myCountCoin, coinPrice, myPriceCoin };
 
                 store('coinsCase').setStore(coinsArray);
+                setAddingCoin(true);
             }
         }   
     }, [myCountCoin])
 
     const addCoinToCase = () => {
         setCountCoin(inputCountCoin);
+        document.getElementsByName('countCoin')[0].value = '';
         setActive(false);
     }
 
@@ -45,7 +50,7 @@ const AddCoin = ({active, setActive, coinId, coinPrice, coinSymbol}) => {
                     <span className='addCoin__info-text'>Adding coin</span>
                     <span className='addCoin__info-coin'>{coinId}</span>
                 </div>
-                <form className='addCoin__form' onSubmit={(event) => addCoinToCase()}>
+                <form className='addCoin__form' onSubmit={(event) => {event.preventDefault(); addCoinToCase()}}>
                     <input className='addCoin__form--input' type='text' name='countCoin' placeholder='write the number of coins' onChange={(event) => setInputCountCoin(event.target.value)}></input>
                     <button className='button button--green button--h35 button--r15' type='submit'>Add</button>
                 </form>

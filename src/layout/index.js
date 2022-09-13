@@ -1,5 +1,5 @@
 import './index.scss'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useOutletContext } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { createAPI, getImage } from '../api'
 import { store } from '../localStorage'
@@ -13,6 +13,7 @@ const Layout = () => {
     const [coinsTop, setCoinsTop] = useState([]);
     const [coins, setCoins] = useState([]);
     const [lStore, setlStore] = useState([]);
+    const [addingCoin, setAddingCoin] = useState(false);
 
     const [caseInfo, setCaseInfo] = useState({
         casePrice: 0,
@@ -52,13 +53,16 @@ const Layout = () => {
                 differencePricePercent = (differencePrice)/totalPriceCase; 
             }
 
-            setCaseInfo({
-                casePrice: totalPriceCase,
-                caseDifferencePrice: differencePrice,
-                caseDifferencePricePercent: differencePricePercent
-            })
+        setCaseInfo({
+            casePrice: totalPriceCase,
+            caseDifferencePrice: differencePrice,
+            caseDifferencePricePercent: differencePricePercent
+        });
+
+        setAddingCoin(false);
+
         return
-    }, [coins, portfolioActive]);
+    }, [coins, portfolioActive, addingCoin]);
 
     const activePortfolio = () => {
         setPortfolioActive(true);
@@ -92,7 +96,7 @@ const Layout = () => {
 
             <Portfolio active={portfolioActive} setActive={setPortfolioActive} lStore={lStore} setlStore={setlStore}/>
                  
-            <Outlet />
+            <Outlet context={{setAddingCoin}}/>
         </div>
     )
 }
