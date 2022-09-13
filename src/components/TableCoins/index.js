@@ -44,7 +44,9 @@ const TableCoins = (ctx) => {
                         <tr className='table-coins__row--body' key={coin.rank} onClick={(e) => { ctx.coins.length > 1 && e.target.type != 'button' ?  navigate('/coin/' + coin.id) : e.preventDefault() } }>
                             <th className='table-coins__col'>{coin.rank}</th>
                             <th className='table-coins__col'>
-                                <img className='table-coins__avatar' src={getImage(coin.symbol)} />
+                                <img className='table-coins__avatar' src={getImage(coin.symbol)} onError={(event) => {
+                                    event.target.src = getImage('btc');
+                                }}  />
                                 {coin.name}
                             </th>
                             <th className='table-coins__col'>{new Intl.NumberFormat('eng-US', { style: 'currency', currency: 'USD' }).format(coin.priceUsd)}</th>
