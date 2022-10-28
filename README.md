@@ -1,6 +1,11 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+& with [CoinCap API 2.0](https://docs.coincap.io/).
+
+## Published version 
+
+This project was published on [Heroku](https://spacoin.herokuapp.com/).
 
 ## Available Scripts
 
